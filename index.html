@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body ng-app="movieApp">
+    <div ng-controller="searchController" class="movies">
+        <input type="text" ng-model="searchKey" placeholder="search">
+        <button ng-click="searchMovies()">Search</button>
+        <label for="filter-select">Sort By:</label>
+        <select name="filter-select" id="filter-select" ng-model="selectedSortOption">
+            <option value="timeadded-ascending">Time added: Ascending</option>
+            <option value="timeadded-descending">Time added: Descending</option>
+            <option value="name-ascending">Name: Ascending</option>
+            <option value="name-descending">Name: Descending</option>
+            <option value="year-ascending">Year: Ascending</option>
+            <option value="year-descending">Year: Descending</option>
+            <option value="director-ascending">Director: Ascending</option>
+            <option value="director-descending">Director: Descending</option>
+        </select>
+        <table>
+            <thead>
+                <tr>
+                    <td>S. No.</td>
+                    <td>Name</td>
+                    <td>Year</td>
+                    <td>Director</td>
+                </tr>
+            </thead>
+            <tr ng-repeat="movie in filteredMovieList">
+                <td>{{$index+1}}</td>
+                <td>{{movie.name}}</td>
+                <td>{{movie.year}}</td>
+                <td>{{movie.director}}</td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>    
